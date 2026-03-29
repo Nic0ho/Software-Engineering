@@ -16,7 +16,7 @@ body{
     color: white;
 }
 .left-panel{
-    position: relative;
+    position: fixed;
     width: 240px;
     height: 100vh;
     display: flex;
@@ -95,10 +95,10 @@ body{
     background-color: #1e1a1b;
 }
 
-.icon-flag{
+.icon-flag {
     width: 28px;
     height: 15px;
-    filter: invert(0);
+    filter: none;
 }
 
 .selected-lang{
