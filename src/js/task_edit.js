@@ -3,12 +3,14 @@ const TaskEditor = (function()
     const overlay = document.getElementById('editor-overlay');
     const titleInput = document.getElementById('editor-title');
     const contentArea = document.getElementById('editor-area');
+    const timeInput = document.getElementById('editor-time');
     let currentId = null;
 
-    function open(id = null, title = '', content = '')
-    {
+    function open(id = null, title = '', content = '', dueDate = '')
+{
         currentId = id;
         titleInput.value = title;
+        timeInput.value = dueDate;
         const deserialized = MdParser.deserialize(content);
         EditorEngine.load(deserialized.plainText, deserialized.formattingMeta);
         contentArea.innerText = deserialized.plainText;
@@ -20,19 +22,21 @@ const TaskEditor = (function()
         overlay.classList.add('none');
         currentId = null;
         titleInput.value = '';
+        timeInput.value = ''; 
         contentArea.innerText = '';
     }
 
     function save()
     {
         const title = titleInput.value.trim() || 'Untitled Task';
-        const content = contentArea.innerText;
+        const content = contentArea.innerText  || 'No content';
         const id = currentId || Date.now();
+        const dueDate = timeInput.value; 
         const newMd =
 `---
 id: ${id}
 status: new
-dueDate:
+dueDate: ${dueDate}
 ---
 # ${title}
 ${content}`;
@@ -44,7 +48,10 @@ ${content}`;
         if (typeof renderGrid === 'function') renderGrid();
     }
     
-    document.getElementById('editor-save').addEventListener('click', save);
+    document.getElementById('editor-save').addEventListener('click', () => {
+        save();
+        closeTaskCard(); 
+});
 
     return { open, close, save };
 })();

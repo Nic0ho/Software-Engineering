@@ -13,7 +13,14 @@ function renderGrid()
     taskEmptyText();
 }
 
-function addTaskCard() { TaskEditor.open(); }
+const  editor_overlay = document.getElementById('editor-overlay');
+function addTaskCard() { 
+        TaskEditor.open();
+        editor_overlay.classList.add('active');
+ }
+function closeTaskCard(){
+        editor_overlay.classList.remove('active');
+}
 
 function taskEmptyText()
 {
@@ -50,8 +57,11 @@ taskgrid.addEventListener('click', (event) =>
     const lines = parsed.content.split('\n');
     const title = lines[0] ? lines[0].replace('# ', '') : '';
     const body = lines.slice(1).join('\n');
+    const dueDate = parsed.metadata.dueDate || '';
+    
+    TaskEditor.open(id, title, body, dueDate); 
+    editor_overlay.classList.add('active');
 
-    TaskEditor.open(id, title, body);
     }
 });
 

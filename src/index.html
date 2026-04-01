@@ -22,18 +22,18 @@
                 <img src="img/user.png" alt=" ">
             </div>
             <div class = "user-details">
-                <p class = "title">Guest</p>
-                <p class = "name">Not logged in</p>
+                <p class = "title" data-lang="nameuser">Guest</p>
+                <p class = "name" data-lang="emailuser">Not logged in</p>
             </div>
             </div>
             <div class ="nav">
 <div class = "menu-top">
                 <div class ="menu">
-                    <p class = "title">Main</p>
+                    <p class = "title" data-lang="maintext">Main</p>
                     <ul>
                         <li class = "active">
                         <a href="#"><img src="img/archive.png" class = "icon">
-                        <span class = "text">Archive</span>
+                        <span class = "text" data-lang="archivetext">Archive</span>
                         </a>
                         </li>
                         <li class = "lang-menu">
@@ -52,22 +52,22 @@
                         </ul>
                     </div>
                         <div class ="menu">
-                         <p class = "title">SETTING</p>
+                         <p class = "title" data-lang="settingtext">SETTING</p>
                          <ul>
                             <li class = "active">
                                 <a href="#"><img src="img/setting.png" class = "icon">
-                                <span class = "text">Setting</span>
+                                <span class = "text" data-lang="settinguser">Setting</span>
                                 </a>
                             </li>
                             <li class="mode">
                                 <div class="moon-sun">
                                     <a href="#" id="dark">
                                         <img src="img/dark-theme.png" class="icon">
-                                        <span class="text">Dark Mode</span>
+                                        <span class="text" data-lang="darktheme">Dark Mode</span>
                                     </a>
                                     <a href="#" id="light" style="display:none">
                                         <img src="img/light-theme.png" class="icon">
-                                        <span class="text">Light Mode</span>
+                                        <span class="text" data-lang="lighttheme">Light Mode</span>
                                     </a>
                                 </div>
                             </li>
@@ -76,16 +76,16 @@
 </div>
 <div class = "menu-bottom">
                         <div class ="menu">
-                         <p class = "title">ACCOUNT</p>
+                         <p class = "title" data-lang="accounttext">ACCOUNT</p>
                          <ul>
                             <li>
                                 <a href="#"><img src="img/info.png" class = "icon">
-                                <span class = "text">About</span>
+                                <span class = "text" data-lang="aboutuser">About</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#"><img src="img/exit.png" class = "icon">
-                                <span class = "text">Exit</span>
+                                <span class = "text" data-lang="exituser">Exit</span>
                                 </a>
                             </li>
                         </ul>
@@ -109,9 +109,9 @@
                     </li>
                 </ul>
                 <div class = separator></div>
-                <ul class = "menu-top-ul">
-                    <li onclick="addTaskCard()">
-                        <img src="img/add.png" class = "icon">
+                <ul class = "menu-top-ul" onclick="addTaskCard()">
+                    <li >
+                        <img src="img/add.png" class = "icon" id = "open">
                     </li>
                 </ul>
             </div>
@@ -132,22 +132,31 @@
                 </div>
             </div>
         </div>
-
+</div>
         <div id="editor-overlay" class="overlay none">
             <div class="modal-content">
-                <div class="editor-toolbar">
-                    <button id="btn-bold"><b>B</b></button>
-                    <button id="btn-italic"><i>I</i></button>
-                    <button id="btn-underline"><u>U</u></button>
-                    <button id="btn-list">• List</button>
+                <div class = "text-edit">
+                    <p>Adding a task</p>
                 </div>
 
+                <div class="editor-top">
                 <input type="text" id="editor-title" placeholder="Task Title">
-                <div id="editor-area" contenteditable="true"></div>
+                <input type="datetime-local" id="editor-time" class="time-card"/>
+                    </div>
+                <div class="editor-toolbar">
+                    <button id="btn-bold"><img src="img/bold.png" alt=" "></button>
+                    <button id="btn-italic"><img src="img/italic.png" alt=" "></button>
+                    <button id="btn-underline"><img src="img/underline.png" alt=" "></button>
+                    <button id="btn-list"><img src="img/list.png" alt=" "></button>
+                    <button id="btn-import"><img src="img/import.png" alt=" "></button>
+                    <button id="btn-export"><img src="img/export.png" alt=" " ></button>
+                </div>
+                
+                <div id="editor-area" contenteditable="true" data-placeholder="Enter description..."></div>
 
                 <div class="modal-buttons">
-                    <button id="editor-cancel" onclick="TaskEditor.close()">Cancel</button>
-                    <button id="editor-save">Save Task</button>
+                    <button id="editor-cancel" onclick="closeTaskCard()">Cancel</button>
+                    <button id="editor-save" >Save Task</button>
                 </div>
             </div>
         </div>

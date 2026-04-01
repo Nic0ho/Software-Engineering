@@ -1,6 +1,35 @@
 const currentLang = document.getElementById('current-lang');
 const langList = document.getElementById('lang-list');
 
+const translations = {
+        en:{
+            nameuser:"Guest",
+            emailuser: "Not logged in",
+            maintext: "MAIN",
+            archivetext: "Archive",
+            settingtext: "SETTING",
+            settinguser: "Setting",
+            darktheme: "Dark Mode",
+            lighttheme: "Light Mode",
+            accounttext: "ACCOUNT",
+            aboutuser: "About",
+            exituser: "Exit"
+        },
+        ua:{
+            nameuser:"Гість",
+            emailuser: "Незареєстрований",
+            maintext: "ГОЛОВНЕ",
+            archivetext: "Архів",
+            settingtext: "НАЛАШТУВАННЯ",
+            settinguser: "Налаштування",
+            darktheme: "Темна тема",
+            lighttheme: "Світла тема",
+            accounttext: "АККАУНТ",
+            aboutuser: "Про нас",
+            exituser: "Вихід"
+        }
+};
+
 function deleteLang(selectedLang) {
     langList.querySelectorAll('li').forEach(li => {
         li.style.display = li.dataset.lang === selectedLang ? 'none' : 'block';
