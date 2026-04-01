@@ -48,6 +48,8 @@ const translations = {
         }
 };
 
+
+
 const languageSelecter= document.querySelector("select");
 
 function deleteLang(selectedLang) {
@@ -114,6 +116,7 @@ langList.querySelectorAll('li').forEach(li => {
 
 
 
+
 $(".menu > ul > li").click(function (e) {
     $(this).siblings().removeClass("active");
     $(this).toggleClass("active");
@@ -124,4 +127,39 @@ $(".menu > ul > li").click(function (e) {
 
 $(".menu-btn").click(function (){
     $(".left-panel").toggleClass("active");
+});
+
+
+
+let darkmode = localStorage.getItem('darkmode');
+
+const enableDarkmode = () =>{
+    document.body.classList.add('darkmode');
+    localStorage.setItem('darkmode', 'active')
+
+    document.getElementById('dark').style.display= 'none';
+    document.getElementById('light').style.display= 'flex';
+};
+
+const disableDarkmode = () =>{
+    document.body.classList.remove('darkmode');
+    localStorage.setItem('darkmode', null)
+
+    document.getElementById('dark').style.display= 'flex';
+    document.getElementById('light').style.display= 'none';
+};
+
+if (darkmode === 'active') {
+    enableDarkmode();
+}
+
+document.getElementById('dark').addEventListener('click',(e)=>{
+    e.preventDefault();
+    darkmode = localStorage.getItem('darkmode');
+    darkmode !== 'active' ? enableDarkmode() : disableDarkmode();
+});
+
+document.getElementById('light').addEventListener('click',(e)=>{
+    e.preventDefault();
+    disableDarkmode();
 });

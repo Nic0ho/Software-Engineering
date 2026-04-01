@@ -1,8 +1,4 @@
-:root {
-    --grid-bg: #f9f9f9;
-    --curve: 10px;
-    --outline-color: #b9b9b9;
-}
+
 
 .task-grid-wrapper {
     margin: 0 10px 0 102px;
@@ -28,7 +24,7 @@
 }
 
 .left-ear, .right-ear {
-    background-color: var(--grid-bg);
+    background-color: var(--color-behind-panel);
     border-radius: var(--curve) var(--curve) 0 0; 
     position: relative;
 }
@@ -43,7 +39,7 @@
     right: calc(-1 * var(--curve));
     width: var(--curve);
     height: var(--curve);
-    background: radial-gradient(circle at top right, transparent var(--curve), var(--grid-bg) calc(var(--curve) + 0.5px));
+    background: radial-gradient(circle at top right, transparent var(--curve), var(--color-behind-panel) calc(var(--curve) + 0.5px));
 }
 
 .right-ear::before {
@@ -53,13 +49,13 @@
     left: calc(-1 * var(--curve));
     width: var(--curve);
     height: var(--curve);
-    background: radial-gradient(circle at top left, transparent var(--curve), var(--grid-bg) calc(var(--curve) + 0.5px));
+    background: radial-gradient(circle at top left, transparent var(--curve), var(--color-behind-panel) calc(var(--curve) + 0.5px));
 }
 
 .task-grid-container {
     padding: 15px;
     padding-left: 20px;
-    background-color: var(--grid-bg);
+    background-color: var(--color-behind-panel);
     display: grid;
     overflow-y: auto; 
     height: calc(100vh - 90px);
@@ -72,16 +68,16 @@
 }
 
 .task-card {
-    color: black;
+    background-color:var(--color-card);
+    color: var(--color-title-card);
     position: relative;
     display: flex;
     flex-direction: column;
     padding: 2em 2em 0.5em 2em;
     height: 100%;
-    background-color: var(--grid-bg);
     border-radius: 8px;
     border-color: var(--outline-color);
-    border: 1px solid var(--outline-color);
+    border: 1px solid var(--border-card);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     animation: task-card-appear 0.4s ease-out forwards;
 }
@@ -97,7 +93,7 @@
 
 .task-card .text-body{
     margin-top:10px;
-    color: rgb(33, 33, 33);
+    color:var(--color-body-card);
     text-align: left;
     font-size: 15px;
     white-space: normal;
@@ -111,14 +107,14 @@
     display: flex;
     justify-content: space-between; 
     padding-top: 4px;
-    border-top: 2px solid #cccccc;
+    border-top: 2px solid var(--border-card);
     width: 100%;
 }
 
 .btn-edit,
 .btn-delete {
     bottom: 0;
-    color: rgb(51, 51, 51);
+    color: var(--text-btn-card);
     padding: 8px 20px;
     border: none;
     cursor: pointer;
@@ -128,24 +124,50 @@
     text-align: center;
     border-radius: 15px;
     width: 140px;
-    background: #ececec;
+    background:var(--btn-card);
 }
 .btn-edit:hover,
 .btn-delete:hover {
-    background: #e4e4e4;
+    background:var(--hover-btn-card);
 }
 
-.checkbox-card{
+input[type ="checkbox"]{
+    -webkit-appearance: none;
+    appearance: none;
     position:absolute;
     padding: 10px;
-    width: 1.2em;
-    height: 1.2em;
+    transform: scale(1);
     cursor: pointer;
     top: 10px; 
-   right: 10px; 
+    right: 10px; 
+    background: var(--color-date);
+    border: 2px solid var(--border-card);
+     border-radius: 50%;
+}
+
+.checkbox-card:checked {
+    background: var(--color-date-after);
+    border-color: var(--border-card-after);
+}
+
+input[type ="checkbox"]:after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 3px;
+    width: 6px;
+    height: 10px;
+    border: solid var(--color-galocha);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+}
+input[type ="checkbox"]:checked::after {
+     opacity: 1;
 }
 
 .time-card{
+    background-color: var(--color-date);
     position: absolute;
     left: -1px;
     top: -2%;
@@ -153,8 +175,8 @@
     height: 25px;
     width: 180px;
     text-align: center;
-    border: 2px solid #d4d4d4;
-    color: rgb(51, 51, 51);
+    border: 2px solid var(--border-card);
+    color: var(--color-time-text);
     font-weight: bold;
 
 }
