@@ -140,7 +140,7 @@
                 </div>
 
                 <div class="editor-top">
-                <input type="text" id="editor-title" placeholder="Task Title">
+                <input type="text" id="editor-title" data-lang-placeholder="tasktitle" placeholder="Task Title">
                 <input type="datetime-local" id="editor-time" class="time-card"/>
                     </div>
                 <div class="editor-toolbar">
@@ -152,7 +152,7 @@
                     <button id="btn-export"><img src="img/export.png" alt=" " ></button>
                 </div>
                 
-                <div id="editor-area" contenteditable="true" data-placeholder="Enter description..."></div>
+                <div id="editor-area" contenteditable="true" data-lang-placeholder="enterdesc" data-placeholder="Enter description..."></div>
 
                 <div class="modal-buttons">
                     <button id="editor-cancel" data-lang="canceltask" onclick="closeTaskCard()" >Cancel</button>

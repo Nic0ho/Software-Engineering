@@ -15,6 +15,8 @@ const translations = {
             aboutuser: "About",
             exituser: "Exit",
             addtask: "Adding a task",
+            tasktitle: "Task Title",       
+            enterdesc: "Enter description...",
             savetask: "Save",
             canceltask: "Cancel",
             archivetask:"Archive",
@@ -35,6 +37,8 @@ const translations = {
             aboutuser: "Про нас",
             exituser: "Вихід",
             addtask: "Додати завдання",
+            tasktitle: "Заголовок",       
+            enterdesc: "Введіть опис...",
             savetask: "Зберегти",
             canceltask: "Скасувати",
             archivetask:"Архівувати",
@@ -60,6 +64,14 @@ function applyLang(langCode) {
     document.querySelectorAll('[data-lang]').forEach(el => {
         const key = el.getAttribute('data-lang');
         if (lang[key]) el.innerText = lang[key];
+    });
+
+    document.querySelectorAll('[data-lang-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-lang-placeholder');
+        if (lang[key]) {
+            el.setAttribute('placeholder', lang[key]);
+            el.setAttribute('data-placeholder', lang[key]);
+        }
     });
 }
 
